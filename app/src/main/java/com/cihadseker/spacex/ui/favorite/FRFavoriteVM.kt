@@ -18,8 +18,8 @@ class FRFavoriteVM @Inject constructor(
     private val repository: RocketRepository
 ) : BaseViewModel() {
 
-    val allList: StateFlow<List<RocketInfo>>
-        get() = repository.readFavorites().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), listOf())
+    val allList: StateFlow<List<RocketInfo>?>
+        get() = repository.readFavorites().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     @OptIn(DelicateCoroutinesApi::class)
     fun updateRocketItem(item: RocketInfo) {

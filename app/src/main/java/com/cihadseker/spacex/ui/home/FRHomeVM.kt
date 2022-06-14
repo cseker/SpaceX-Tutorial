@@ -19,8 +19,8 @@ class FRHomeVM @Inject constructor(
     private val repository: RocketRepository
 ) : BaseViewModel() {
 
-    val rocketList: StateFlow<List<RocketInfo>>
-        get() = repository.allList().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), listOf())
+    val rocketList: StateFlow<List<RocketInfo>?>
+        get() = repository.allList().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     fun getRocketList() = launch {
         useCase(Unit)

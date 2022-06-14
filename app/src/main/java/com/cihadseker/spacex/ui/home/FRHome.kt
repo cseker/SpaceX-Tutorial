@@ -9,7 +9,6 @@ import com.cihadseker.spacex.databinding.FragmentHomeBinding
 import com.cihadseker.spacex.ui.SharedRocketVM
 import com.cihadseker.spacex.ui.maintab.FRMainTabDirections
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -52,8 +51,10 @@ class FRHome : BaseFragment<FragmentHomeBinding>() {
 
     override fun setReceiver() {
         lifecycleScope.launchWhenCreated {
-            viewModel.rocketList.collect {
-                adapterHome.submitList(it)
+            viewModel.rocketList.collect { itCollect ->
+                itCollect?.let {
+                    adapterHome.submitList(it)
+                }
             }
         }
     }

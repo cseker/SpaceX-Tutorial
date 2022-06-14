@@ -44,8 +44,10 @@ class FRFavorite : BaseFragment<FragmentFavoriteBinding>() {
 
     override fun setReceiver() {
         lifecycleScope.launchWhenCreated {
-            viewModel.allList.collect {
-                adapterFavorite.submitList(it)
+            viewModel.allList.collect { itCollect ->
+                itCollect?.let {
+                    adapterFavorite.submitList(it)
+                }
             }
         }
     }
