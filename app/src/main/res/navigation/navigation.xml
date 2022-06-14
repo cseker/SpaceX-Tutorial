@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_splash"
+    app:startDestination="@+id/FRSplash">
+
+    <fragment
+        android:id="@+id/FRSplash"
+        android:name="com.cihadseker.spacex.ui.splash.FRSplash"
+        android:label="@string/splash_screen"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/toFRMainTab"
+            app:destination="@id/FRMainTab"
+            app:popUpTo="@id/FRSplash"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/FRMainTab"
+        android:name="com.cihadseker.spacex.ui.maintab.FRMainTab"
+        android:label="FRMainTab">
+        <action
+            android:id="@+id/toFRDetail"
+            app:destination="@id/FRHomeDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/FRHomeDetail"
+        android:name="com.cihadseker.spacex.ui.homedetail.FRHomeDetail"
+        android:label="FRHomeDetail" />
+
+</navigation>
